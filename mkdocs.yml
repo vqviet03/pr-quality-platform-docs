@@ -1,0 +1,82 @@
+site_name: PR Quality Platform
+site_description: Tài liệu sản phẩm và kỹ thuật
+docs_dir: handbook
+theme:
+  name: material
+  language: vi
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Chế độ tối
+    - scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Chế độ sáng
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+nav:
+  - Tổng quan: index.md
+  - Nền tảng:
+      - Yêu cầu: docs/requirements.md
+      - Kiến trúc: docs/architecture.md
+      - Lộ trình: docs/roadmap.md
+      - Bảo mật: docs/security.md
+      - Vận hành: docs/operations.md
+      - Quy chuẩn: docs/standards.md
+  - Package:
+      - Shell giao diện:
+          - Tổng quan: packages/portal-shell/README.md
+          - Yêu cầu: packages/portal-shell/requirements.md
+          - Phát triển: packages/portal-shell/development.md
+      - Design system:
+          - Tổng quan: packages/platform-ui/README.md
+          - Yêu cầu: packages/platform-ui/requirements.md
+          - Phát triển: packages/platform-ui/development.md
+      - Dự án và Git:
+          - Tổng quan: packages/projects-git/README.md
+          - Yêu cầu: packages/projects-git/requirements.md
+          - Phát triển: packages/projects-git/development.md
+      - Review và phát hiện:
+          - Tổng quan: packages/review/README.md
+          - Yêu cầu: packages/review/requirements.md
+          - Phát triển: packages/review/development.md
+      - Bản sửa và phê duyệt:
+          - Tổng quan: packages/fixes-approvals/README.md
+          - Yêu cầu: packages/fixes-approvals/requirements.md
+          - Phát triển: packages/fixes-approvals/development.md
+      - Điều phối thực thi:
+          - Tổng quan: packages/execution/README.md
+          - Yêu cầu: packages/execution/requirements.md
+          - Phát triển: packages/execution/development.md
+      - Kiểm thử trình duyệt và preview:
+          - Tổng quan: packages/preview/README.md
+          - Yêu cầu: packages/preview/requirements.md
+          - Phát triển: packages/preview/development.md
+      - Agent máy người dùng:
+          - Tổng quan: packages/local-agent/README.md
+          - Yêu cầu: packages/local-agent/requirements.md
+          - Phát triển: packages/local-agent/development.md
+      - Tổ chức và quyền:
+          - Tổng quan: packages/organization-access/README.md
+          - Yêu cầu: packages/organization-access/requirements.md
+          - Phát triển: packages/organization-access/development.md
+      - Chi phí và audit:
+          - Tổng quan: packages/usage-audit/README.md
+          - Yêu cầu: packages/usage-audit/requirements.md
+          - Phát triển: packages/usage-audit/development.md
+      - Kho bằng chứng:
+          - Tổng quan: packages/artifacts/README.md
+          - Yêu cầu: packages/artifacts/requirements.md
+          - Phát triển: packages/artifacts/development.md
+  - Mẫu:
+      - Tính năng: templates/feature.md
+      - Kiến trúc: templates/adr.md
+      - Runbook: templates/runbook.md
+      - Pull request: templates/pull-request.md
