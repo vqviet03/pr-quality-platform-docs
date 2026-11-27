@@ -1,2 +1,9 @@
 site/
 .venv/
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
+!.env.example
+public/search-index.json
