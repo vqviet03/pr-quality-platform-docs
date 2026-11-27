@@ -4,6 +4,7 @@ import path from 'node:path';
 import { load } from 'cheerio';
 import { allDocuments } from '../src/lib/content';
 import { diagramInfo, siteUrl } from '../src/lib/navigation';
+import { basePath } from '../src/lib/paths';
 
 const output = path.resolve('out');
 function walk(directory: string): string[] {
@@ -22,8 +23,9 @@ for (const file of htmlFiles) {
   $('[href], [src]').each((_, element) => {
     const url = $(element).attr('href') || $(element).attr('src');
     if (!url || /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(url)) return;
-    const parsed = new URL(url, `https://docs.invalid/${path.relative(output, file)}`);
-    const targetPath = decodeURIComponent(parsed.pathname);
+    const parsed = new URL(url, `https://docs.invalid${basePath}/${path.relative(output, file)}`);
+    const pathname = decodeURIComponent(parsed.pathname);
+    const targetPath = basePath && pathname.startsWith(`${basePath}/`) ? pathname.slice(basePath.length) : pathname;
     let target = path.join(output, targetPath);
     if (fs.existsSync(target) && fs.statSync(target).isDirectory()) target = path.join(target, 'index.html');
     if (!fs.existsSync(target)) { errors.push(`${path.relative(output, file)}: missing target ${url}`); return; }

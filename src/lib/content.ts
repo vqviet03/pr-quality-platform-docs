@@ -10,6 +10,7 @@ import rehypeStringify from 'rehype-stringify';
 import { visit } from 'unist-util-visit';
 import type { Root as MarkdownRoot } from 'mdast';
 import type { Root, Element, Text } from 'hast';
+import { withBasePath } from './paths';
 
 const handbook = path.join(process.cwd(), 'handbook');
 
@@ -53,7 +54,7 @@ export async function renderDocument(file: string) {
         if (resolved.startsWith('../') || !fs.existsSync(path.join(handbook, resolved))) {
           throw new Error(`Broken Markdown link in ${file}: ${node.url}`);
         }
-        node.url = fileToHref(resolved) + suffix;
+        node.url = withBasePath(fileToHref(resolved)) + suffix;
       });
       // The page header renders the title; avoid a duplicate h1 in the article.
       tree.children = tree.children.filter(node => node.type !== 'heading' || node.depth !== 1);

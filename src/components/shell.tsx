@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { packages, platformDocs, repository } from '@/lib/navigation';
+import { withBasePath } from '@/lib/paths';
 
 type SearchResult = { title: string; href: string; description: string; text: string };
 function normalize(value: string) {
@@ -69,7 +70,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   async function loadSearch() {
     if (index.length) return;
     try {
-      const response = await fetch('/search-index.json');
+      const response = await fetch(withBasePath('/search-index.json'));
       if (!response.ok) throw new Error('Search unavailable');
       setIndex(await response.json());
       setSearchError(false);

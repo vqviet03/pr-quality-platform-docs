@@ -6,12 +6,13 @@ import '@fontsource/roboto/vietnamese-700.css';
 import './globals.css';
 import { Shell } from '@/components/shell';
 import { siteUrl } from '@/lib/navigation';
+import { withBasePath } from '@/lib/paths';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: 'Tài liệu PR Quality Platform', template: '%s · PR Quality' },
   description: 'Tài liệu sản phẩm và kỹ thuật cho nền tảng review PR, kiểm thử và duyệt bản sửa bằng AI.',
-  icons: { icon: '/favicon.svg' },
+  icons: { icon: withBasePath('/favicon.svg') },
 };
 const themeScript = `try{document.documentElement.dataset.theme=localStorage.getItem('pq-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch{}`;
 

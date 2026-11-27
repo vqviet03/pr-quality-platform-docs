@@ -45,12 +45,12 @@ npm run check:export
 
 ## GitHub Pages và tên miền
 
-Workflow [Build and deploy documentation](.github/workflows/docs.yml) chạy trên push `main`, pull request và thao tác thủ công. Pull request chỉ build/kiểm tra; `main` thiết lập custom domain bằng Pages API rồi deploy qua GitHub Pages Actions với quyền `pages: write` và `id-token: write`.
+Workflow [Build and deploy documentation](.github/workflows/docs.yml) chạy trên push `main`, pull request và thao tác thủ công. Pull request chỉ build/kiểm tra; `main` deploy qua GitHub Pages Actions với quyền `pages: write` và `id-token: write`. Workflow đọc URL Pages để tự cấu hình `basePath`: website dùng được cả tại địa chỉ repository mặc định lẫn custom domain. Sau khi đổi custom domain trong Settings, chạy lại workflow để cập nhật đường dẫn asset và liên kết.
 
 ### Thiết lập lần đầu
 
 1. Vào [Settings → Pages](https://github.com/vqviet03/pr-quality-platform-docs/settings/pages), chọn **Source → GitHub Actions**.
-2. Workflow sẽ lưu **Custom domain** là `cra-docs.eeslern.com` bằng Pages API. Nếu bước này bị thiếu quyền, nhập tên miền tại Settings → Pages rồi Save. `public/CNAME` đã chứa tên miền này và được đưa vào mọi bản export. Với nguồn GitHub Actions, chỉ file CNAME không đủ để thiết lập domain phía GitHub.
+2. Trong **Custom domain**, nhập `cra-docs.eeslern.com` rồi Save. `public/CNAME` đã chứa tên miền này và được đưa vào mọi bản export. Với nguồn GitHub Actions, vẫn phải lưu custom domain trong Settings/API; chỉ file CNAME không đủ để thiết lập domain phía GitHub. Token deploy của workflow có thể xuất bản website nhưng GitHub có thể từ chối thao tác đổi domain; khi đó dùng Settings bằng tài khoản chủ repo.
 3. Tại nhà cung cấp DNS của `eeslern.com`, tạo bản ghi:
 
    | Type | Name/Host | Target/Value |
